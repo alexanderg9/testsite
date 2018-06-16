@@ -1,0 +1,1 @@
+docker run --rm -it --name typescript -v $PWD:/mnt -w /mnt node /bin/bash -c "npm install -g typescript; /bin/bash"
