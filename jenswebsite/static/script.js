@@ -1,5 +1,5 @@
 "use strict";
-//change to a step function instead of sliding scale
+//make them objects somehow, so its where you click, and not calculated? which would allow clicking white notes farther up
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -35,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-//make them objects somehow, so its where you click, and not calculated? which would allow clicking white notes farther up
 var width = Math.floor(900 / 52);
 function draw_key(x, y, width, height, colour) {
     ctx.beginPath();
@@ -60,14 +59,16 @@ function draw(highlightx, highlighty) {
         key += 1;
     }
     key = 0;
+    var index = 0;
     for (x = 0; x < 900 - (2 * width); x += width) {
         var bx = x + Math.floor(width / 2);
         if (key % 7 != 1 && key % 7 != 4) {
             draw_key(bx, 0, width, 75, 'black');
             if (highlightx > bx && highlightx < bx + width && highlighty < 75) {
                 draw_key(bx, 0, width, 75, 'blue');
-                play(highlightx, 1, key);
+                play(highlightx, 1, index);
             }
+            index += 1;
         }
         key += 1;
     }

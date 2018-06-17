@@ -1,9 +1,8 @@
-//change to a step function instead of sliding scale
 
 //make them objects somehow, so its where you click, and not calculated? which would allow clicking white notes farther up
 
 
-    var width = Math.floor(900 / 52);
+var width = Math.floor(900 / 52);
 
 function draw_key(x, y, width, height, colour) {
     ctx.beginPath();
@@ -29,15 +28,16 @@ function draw(highlightx, highlighty) {
 	key += 1;
     }
     key = 0;
+    var index = 0;
     for (x=0; x < 900 - (2*width); x+= width) {	
 	let bx = x + Math.floor(width/2);
 	if (key % 7 != 1 && key % 7 != 4) {
 	    draw_key(bx, 0, width, 75, 'black');
-	
 	    if (highlightx > bx && highlightx < bx+width && highlighty < 75) {
 		draw_key(bx, 0, width, 75, 'blue');
-		play(highlightx, 1, key)
+		play(highlightx, 1, index)
 	    }
+	    index += 1;
 	}	
 	key += 1;
     }
